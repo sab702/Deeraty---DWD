@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <title><% if (typeof pageTitle != "undefined") { %>
+           <%= pageTitle %>
+        <% } else { %>
+Deeraty
+<% } %></title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link href='http://fonts.googleapis.com/css?family=Average' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+   <div class="container">
+
+            <div class="header">
+                <% if (typeof pageTitle != "undefined") { %>
+                   <h1><%= pageTitle %></h1>
+                <% } %>
+            </div>
+            
+            <div class="">
+                <%- body %>
+            </div>
+
+
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+  </body>
+</html>

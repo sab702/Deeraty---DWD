@@ -1,0 +1,46 @@
+<style>
+
+div.post {
+     width: 180px;
+     float:left;
+     background:lightgray;
+     margin:8px;
+     padding:3px;
+}
+
+</style>
+<div class="row">
+   <form method="POST" action="/my_date"> 
+    <!-- LEFT COLUMN -->
+    <div class="span6">
+        <h2>Events in the city to take your date to!</h2>
+        
+    <!-- Loop through all blogposts -->
+    <% for(i=0; i<events.length; i++) {%>
+        <div class="events">
+            <input type="radio" name="event" value="<%= events[i].urlslug %>">
+            <h3><a href="http://betherenyc.herokuapp.com/<%= events[i].urlslug %>"><%= events[i].name %></a></h3>
+           
+            <p> on <%= events[i].date %> at <%= events[i].time %> at <%= events[i].place %> </p>
+        </div>
+    <% } %>
+    <input type="submit" class="span4 btn-info" value="Take me to my date!" />
+    </div>
+      
+    <!-- RIGHT COLUMN -->
+    <div class="span6">
+     <h3> My date:</h3>
+       <h4 class="name">Name: <%= ad.name %>.</h4>
+                    <br>
+                    <h4 class="night">
+                       Ideal date: <%= ad.night %>.
+                    </h4>
+                    <br>
+                    <img class="span8" src="/img/<%= ad.image %>">
+        Check all events:<br>
+        <a href="<%= source_url %>" target="_new"><%= source_url %></a><br>
+        
+     </div>
+    </form>
+</div>
+
