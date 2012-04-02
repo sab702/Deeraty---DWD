@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<h1>Your soulmate is here somewhere!</h1>
+<br><br>
+<body>
+<form method="POST" action="/events">
+<% for(i=0; i<ad.length; i++) { %>
+<div class="row">
+
+    <div class="span12">
+
+        <h2>
+            <a href="/entry/<%= ad[i].urlslug %>">
+                <%= ad[i].name %>
+            </a>
+        </h2>
+        
+        	<img class="span8" src="/img/<%= ad[i].image %>">
+        <h3 class="night">	My ideal date would be: <%= ad[i].night%>
+        </h3>
+        <small>By <%= ad[i].name %> on <%= ad[i].date %></small>
+       <input type="submit" class="span4 btn-info" value="I like what I see!" />
+       
+       <hr />
+        
+    </div>
+</div>
+
+<% } %>
+  </form>
+ </body>
+</html>
