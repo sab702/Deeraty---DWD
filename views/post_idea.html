@@ -3,59 +3,47 @@
 <body>
 <div class="row">
     <div class="span12">
-        <form method="POST" action="/personal_ad_form/"> <!-- make sure this matches the POST action in the web.js file -->
+        <form method="POST" action="/post_idea"> <!-- make sure this matches the POST action in the web.js file -->
     
             <div class="row">
                 <div class="span4 offset2">
-                    <label for="name">I am the sexy:</label>
-                    <input type="text" name="name" id="name" size="40">
+                    <label for="idea">My idea is to...</label><br/>
+                    <textarea type="text" name="idea" id="idea" cols="200" rows="12"></textarea>
                 </div>
             </div>
             
             <div class="row">
                 <div class="span7 offset2">
                     <br />
-                    <label for="night">Now, describe what the ideal date would be to your future soulmate!</label>
-                    <textarea name="night" id="night" cols="200" rows="12"></textarea>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="span10 offset2">
-                    <br/>
-                    <label for="image">Pick an image that best resembles you!</label>
+                    <label for="good">This would be good because...</label>
+                    <textarea name="good" id="good" cols="200" rows="12"></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="span1">&nbsp;</div>
-                
-                <% for(i=0; i<personalImages.length; i++) { %>
+             <div class="span3 offset1">
+               <label for="type">Type of suggestion:</label>
+                <% for(i=0; i<Types.length; i++) { %>
                 <div class="offset1 span2">
-                    <input type="radio" name="image" value="<%= personalImages[i] %>">
-                    <img src="/img/<%= personalImages[i] %>" alt="<%= personalImages[i] %>">
+                    <input type="radio" name="type" value="<%= Types[i] %>">
                 </div>
                 <% } %>
-                
+             </div>
             </div>
             <div class="row">
-             <div class="span4 offset1">
-            
-            <br/>
+            	<div class="span3 offset1">
+            		<label for="name">My name:</label>
+            		<input type="text" name="name" id="name" size="60">
+            	</div>
+            	<div class="span3 offset1">
+            		<label for="email">My email address:</label>
+            		<input type="text" name="email" id="email" size="60">
+            	</div>
+            </div>
            
-                <label for="music"> Last step! Now, select a soundtrack for that date! </label> <br/>
-                    <% for(i=0; i<personalVideos.length; i++) { %>
-                <div class="offset1 span2">
-                    <input type="radio" name="music" value="<%= personalVideos[i] %>">
-                    <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= personalVideos[i] %>" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <% } %>
-                
-                </div>
-            </div>
             <div class="row">
                 <div class="offset4 span4">
                     <br/><br/>
-                    <input type="submit" class="span4 btn-info" value="My personal ad" />
+                    <input type="submit" class="span4 btn-info" value="Post my idea" />
                     
                 </div>
             </div>

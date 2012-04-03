@@ -7,13 +7,13 @@ var mongoose = require('mongoose'); // include Mongoose MongoDB library
 var schema = mongoose.Schema; 
 
 /************ DATABASE CONFIGURATION **********/
-//app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
+app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
 
 // Include models.js - this file includes the database schema and defines the models used
-//require('./models').configureSchema(schema, mongoose);
+require('./models').configureSchema(schema, mongoose);
 
 // Define your DB Model variables
-//var PersonalAd = mongoose.model('PersonalAd');
+var Idea = mongoose.model('Idea');
 /************* END DATABASE CONFIGURATION *********/
 
 
@@ -52,8 +52,88 @@ app.configure(function() {
 
 });
 /*********** END SERVER CONFIGURATION *****************/
+function convertToSlug(Text)
+        {
+            return Text
+                .toLowerCase()
+                .replace(/[^\w ]+/g,'')
+                .replace(/ +/g,'-')
+                ;
+        }
+
+Types=['beautify', 'improvement', 'infrastructure', 'greenery'];
+
 app.get('/', function(request, response) {
   response.render('intro.html');
+});
+
+
+app.get('/about', function(request, response) {
+ response.render('about.html');
+});
+
+
+app.get('/post_idea', function(request, response) {
+
+// build the query
+    var query = Idea.find({});
+    query.sort('date',-1); //sort by date in descending order
+    
+    // run the query and display blog_main.html template if successful
+    query.exec({}, function(err, allIdeas){
+    
+    var templateData = { 
+        idea : allIdeas,
+        pageTitle : 'Deeraty',
+        //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
+    };
+
+ response.render('post_idea.html', templateData);
+
+ });
+});
+
+
+app.post('/post_idea', function(request, response) {
+ 
+  console.log("Inside app.post('/')");
+  console.log("form received and includes")
+  console.log(request.body);  //this prints out to the console all the form info, but not writing it to Mongo yet. 
+    
+  newSlug = convertToSlug(request.body.type+request.body.name);  
+  
+    var IdeaData = { //making a new object of PersonalAdInfo -- we're just collecting all the data from the form into one chunk that we can then stick into the object, which is the model (which is defined in models.js. The schema is the combination of all the models).
+   idea : request.body.idea,
+   good : request.body.good,
+   type : request.body.type,
+   name : request.body.name,
+   email : request.body.email,
+   urlslug : newSlug,
+ };
+ 
+  var myIdea = new Idea(IdeaData); //creating a new instance of the Personal ad, using the data from the form and the model.
+   myIdea.save();
+   response.redirect('/all_ideas/' + IdeaData.urlslug);
+
+});
+
+app.get('/all_ideas/:urlslug', function(request, response) {
+    
+    // build the query
+    var query = Idea.find({});
+    query.sort('date',-1); //sort by date in descending order
+    
+    // run the query and display blog_main.html template if successful
+    query.exec({}, function(err, allIdeas){
+    
+    var templateData = { 
+        idea : allIdeas,
+        pageTitle : 'Deeraty',
+        //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
+    };
+
+response.render('all_ideas.html', templateData);
+});
 });
 
 var port = process.env.PORT || 3000;
