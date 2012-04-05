@@ -15,6 +15,7 @@ module.exports.configureSchema = function(Schema, mongoose) {
     , type     : String
     , name     : String
     , email    : String
+    , urlslug  : String
     , date      : { type: Date, default: Date.now }
     , comments  : [Comments]
     , author      : {

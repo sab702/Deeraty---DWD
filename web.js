@@ -113,27 +113,26 @@ app.post('/post_idea', function(request, response) {
  
   var myIdea = new Idea(IdeaData); //creating a new instance of the Personal ad, using the data from the form and the model.
    myIdea.save();
-   response.redirect('/all_ideas/' + IdeaData.urlslug);
+   response.redirect('/my_idea/' + IdeaData.urlslug);
 
 });
 
-app.get('/all_ideas/:urlslug', function(request, response) {
+app.get('/my_idea/:urlslug', function(request, response) {
     
-    // build the query
-    var query = Idea.find({});
-    query.sort('date',-1); //sort by date in descending order
-    
-    // run the query and display blog_main.html template if successful
-    query.exec({}, function(err, allIdeas){
-    
-    var templateData = { 
-        idea : allIdeas,
-        pageTitle : 'Deeraty',
-        //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
-    };
+	//get a single idea using the requested urlslug
+    Idea.findOne({urlslug : request.params.urlslug}, function(err, idea){
+		
+		var templateData = { 
+			idea : idea,
+			pageTitle : 'Deeraty',
+			//(if wanted to reference these images in code, would put templateData.images)images: personalImages,
+		};
+		console.log(templateData);
+	
+		response.render('my_idea.html', templateData);
 
-response.render('all_ideas.html', templateData);
-});
+	}); //end of .findOne
+
 });
 
 var port = process.env.PORT || 3000;
