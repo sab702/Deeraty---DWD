@@ -135,6 +135,26 @@ app.get('/my_idea/:urlslug', function(request, response) {
 
 });
 
+app.get('/all_ideas', function(request, response) {
+
+ // build the query
+    var query = Idea.find({});
+    query.sort('date',-1); //sort by date in descending order
+    
+    // run the query and display blog_main.html template if successful
+    query.exec({}, function(err, allIdeas){
+    
+    var templateData = { 
+        idea : allIdeas,
+        pageTitle : 'Afkarna',
+        //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
+    };
+
+    response.render("all_ideas.html",templateData);
+ }); // end of find all
+
+});
+
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
