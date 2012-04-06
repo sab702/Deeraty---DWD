@@ -155,6 +155,28 @@ app.get('/all_ideas', function(request, response) {
 
 });
 
+app.get('/data/all', function(request, response) {
+    
+    // define the fields you want to include in your json data
+    includeFields = ['idea','good', 'type' ,'urlslug','date', 'name', 'email' ]
+
+    // query for all blog
+    queryConditions = {}; //empty conditions - return everything
+    var query = Idea.find( queryConditions, includeFields); //Model, or name of Schema
+
+    query.sort('date',-1); //sort by most recent
+    query.exec(function (err, allIdeas) {
+
+        // render the card_form template with the data above
+        jsonData = {
+          'status' : 'OK',
+          'ideas' : allIdeas
+        }
+
+        response.json(jsonData);
+    });
+});
+
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);

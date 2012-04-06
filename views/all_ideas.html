@@ -3,14 +3,14 @@
 <h1>See what others suggested:</h1>
 <br><br>
 <body>
-<form method="POST" action="/events"> <!-->The information I provide here will be POSTED and will take me to XYZ page<-->
+<form method="POST" action="/my_idea"> <!-->The information I provide here will be POSTED and will take me to XYZ page<-->
 <% for(i=0; i<idea.length; i++) { %>
 <div class="row">
 
     <div class="span12">
 
         <h2>
-            <a href="/entry/<%= idea[i].urlslug %>">
+            <a href="/my_idea/<%= idea[i].urlslug %>">
                 <%= idea[i].idea %>
             </a>
         </h2>
