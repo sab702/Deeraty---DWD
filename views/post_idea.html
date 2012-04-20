@@ -24,7 +24,7 @@
                <label for="type">Type of suggestion:</label>
                 <% for(i=0; i<Types.length; i++) { %>
                 <div class="offset1 span2">
-                    <input type="radio" name="type" value="<%= Types[i] %>">
+                    <input type="radio" name="type" label="<%= Types[i] %>" value="<%= Types[i] %>"> <%= Types[i] %>
                 </div>
                 <% } %>
              </div>
