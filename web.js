@@ -135,6 +135,24 @@ app.get('/my_idea/:urlslug', function(request, response) {
 
 });
 
+app.get('/my_idea', function(request, response) {
+    
+	//get a single idea using the requested urlslug
+    Idea.findOne({urlslug : request.params.urlslug}, function(err, idea){
+		
+		var templateData = { 
+			idea : idea,
+			pageTitle : 'Deeraty',
+			//(if wanted to reference these images in code, would put templateData.images)images: personalImages,
+		};
+		console.log(templateData);
+	
+		response.render('my_idea.html', templateData);
+
+	}); //end of .findOne
+
+});
+
 app.get('/all_ideas', function(request, response) {
 
  // build the query
