@@ -20,7 +20,7 @@ Deeraty ديرتي
 	<div class="span4">
 	  <h2><a href="/post_idea">عندي فكرة Post an idea</a></h2>
 	</div>
-	<div class="span4">
+	<div class="span4" id="browse">
 	 <h2><a href="/all_ideas">أفكار Browse ideas</a></h2>
 	</div>
 	<div class="span4">
@@ -28,6 +28,14 @@ Deeraty ديرتي
 	</div>
 </div>	
 
+<div id="Types">
+
+ <% for(i=0; i<Types.length; i++) { %>
+        <div class="type">
+        	<a href="/"><%= Types[i] %></a>
+        </div>
+ <% } %>
+</div>
   </head>
   <body>
    <div class="container">

@@ -57,3 +57,17 @@ textarea#message {
     padding:30px 0 30px 0;
     text-align:center;
 }
+
+#Types { 
+	width:100px;
+	visibility:hidden;
+
+}
+
+#browse:hover #types {  
+	visibility:visible;
+}
+
+.type {  
+	
+}

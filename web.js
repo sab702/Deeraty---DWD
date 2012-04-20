@@ -61,7 +61,7 @@ function convertToSlug(Text)
                 ;
         }
 
-Types=['beautify', 'improvement', 'infrastructure', 'greenery'];
+Types=['beautify', 'improvement', 'infrastructure', 'greenery', 'other'];
 
 app.get('/', function(request, response) {
   response.render('intro.html');
