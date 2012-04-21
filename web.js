@@ -72,7 +72,7 @@ app.get('/', function(request, response) {
   
   locations = [
     {
-        title : 'Al Khobar Al Shamaliyah',
+        title : 'Al Khobar Al Shamaliyah الخبر الشمالية',
         shortname : 'testing',
         position : {
             lat : 26.2876,
@@ -80,7 +80,7 @@ app.get('/', function(request, response) {
         }
     },
     {
-        title : 'Agrabiyah',
+        title : 'Agrabiyah عقربية',
         shortname : 'testing',
         position : {
             lat : 26.2958,
@@ -88,7 +88,7 @@ app.get('/', function(request, response) {
         }
     },
     {
-        title : 'Thugbah',
+        title : 'Thugbah ثقبة ',
         shortname : 'testing',
         position : {
             lat : 26.2725,
@@ -96,7 +96,7 @@ app.get('/', function(request, response) {
         }
     },
     {
-        title : 'Ar Rakah',
+        title : 'Ar Rakah الراكة',
         shortname : 'testing',
         position : {
             lat : 26.3551,
@@ -104,7 +104,7 @@ app.get('/', function(request, response) {
         }
     },
     {
-        title : 'Al Aziziyah',
+        title : 'Al Aziziyah العزيزية',
         shortname : 'testing',
         position : {
             lat : 26.4572,
