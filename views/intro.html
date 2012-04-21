@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 
+<!-- Sample CSS -->
+<style>
+div#map_canvas {
+    width:1000px;
+    height:500px;
+}
+</style>
+
 <html>
 <body>
 <div class="row">
   <div class="container">
-    	<img src="/img/landscape.jpg" alt="Your neighborhood"/>
+    	<!--<img src="/img/landscape.jpg" alt="Your neighborhood"/>!-->
+  
+    
+      <div class="span8" id="map_canvas"></div> <!--This is where Google places the map on the site-->
+   </div>
   </div>
-</div>
-</body>
+ </body>
 </html>
+
+
+<script>
+
+    // myLocations is a javascript array of objects with location title and lat/lng position information
+    // receive JSON string from web.js convert to native Javascript object with the eval() function
+    myLocations = eval(<%- customLocationsJSON %>);  //this is the part that converts it to JS object. Could also use JSON.parse, but eval is more native.
+
+</script>
+

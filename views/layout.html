@@ -51,10 +51,16 @@ Deeraty ديرتي
             </div>
 
 
-        </div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-
+    </div>
+<!-- JavaScript at the bottom for fast page loading -->
+        <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/map.js"></script>
+        <script>
+            jQuery(document).ready(function() {
+                loadScript();
+                
+            })
+        </script>
   </body>
 </html>

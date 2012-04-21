@@ -14,6 +14,7 @@ require('./models').configureSchema(schema, mongoose);
 
 // Define your DB Model variables
 var Idea = mongoose.model('Idea');
+var Comment = mongoose.model('Comment');
 /************* END DATABASE CONFIGURATION *********/
 
 
@@ -49,6 +50,10 @@ app.configure(function() {
     /**** Turn on some debugging tools ****/
     app.use(express.logger());
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+    
+    /*new from Google Maps API*/
+    app.use(express.methodOverride());
+    app.use(app.router);
 
 });
 /*********** END SERVER CONFIGURATION *****************/
@@ -64,9 +69,61 @@ function convertToSlug(Text)
 Types=['beautify', 'improvement', 'infrastructure', 'greenery', 'other'];
 
 app.get('/', function(request, response) {
-  response.render('intro.html');
+  
+  locations = [
+    {
+        title : 'Al Khobar Al Shamaliyah',
+        shortname : 'testing',
+        position : {
+            lat : 26.2876,
+            lng : 50.2142
+        }
+    },
+    {
+        title : 'Agrabiyah',
+        shortname : 'testing',
+        position : {
+            lat : 26.2958,
+            lng : 50.1916
+        }
+    },
+    {
+        title : 'Thugbah',
+        shortname : 'testing',
+        position : {
+            lat : 26.2725,
+            lng : 50.1914
+        }
+    },
+    {
+        title : 'Ar Rakah',
+        shortname : 'testing',
+        position : {
+            lat : 26.3551,
+            lng : 50.1979
+        }
+    },
+    {
+        title : 'Al Aziziyah',
+        shortname : 'testing',
+        position : {
+            lat : 26.4572,
+            lng : 50.0707
+        }
+    }
+    
+    ];
+    
+    templateData = {
+        customLocationsJSON : JSON.stringify(locations) //we convert it into a String (from an Object), and then in index.html we turn it back into a Javascript object on the template.
+    }
+    
+    response.render('intro.html', templateData);
 });
 
+app.get('/location/:shortname', function(request, response) {
+	response.send( request.params.shortname );
+});
 
 app.get('/about', function(request, response) {
  response.render('about.html');
