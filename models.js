@@ -10,7 +10,8 @@ module.exports.configureSchema = function(Schema, mongoose) {
     
     // Idea - 
     var Idea = new Schema({
-      idea     : String
+    location    : String
+    ,  idea     : String
     , good     : String
     , type     : String
     , name     : String
@@ -22,11 +23,12 @@ module.exports.configureSchema = function(Schema, mongoose) {
         name : String
         , email  : String
       }
+ 	, meta : { votes : Number , favs : Number }
     });
 
 
     // add schemas to Mongoose -- when have schemas defined, can turn them into models
     mongoose.model('Idea', Idea);
-    mongoose.model('Comment', Comments);
+    mongoose.model('Comments', Comments);
 };
 

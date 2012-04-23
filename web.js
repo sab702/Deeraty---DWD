@@ -14,7 +14,7 @@ require('./models').configureSchema(schema, mongoose);
 
 // Define your DB Model variables
 var Idea = mongoose.model('Idea');
-var Comment = mongoose.model('Comment');
+var Comment = mongoose.model('Comments');
 /************* END DATABASE CONFIGURATION *********/
 
 
@@ -73,7 +73,7 @@ app.get('/', function(request, response) {
   locations = [
     {
         title : 'Al Khobar Al Shamaliyah الخبر الشمالية',
-        shortname : 'testing',
+        shortname : 'AlKhAlSh',
         position : {
             lat : 26.2876,
             lng : 50.2142
@@ -81,7 +81,7 @@ app.get('/', function(request, response) {
     },
     {
         title : 'Agrabiyah عقربية',
-        shortname : 'testing',
+        shortname : 'Agr',
         position : {
             lat : 26.2958,
             lng : 50.1916
@@ -89,7 +89,7 @@ app.get('/', function(request, response) {
     },
     {
         title : 'Thugbah ثقبة ',
-        shortname : 'testing',
+        shortname : 'Thug',
         position : {
             lat : 26.2725,
             lng : 50.1914
@@ -97,7 +97,7 @@ app.get('/', function(request, response) {
     },
     {
         title : 'Ar Rakah الراكة',
-        shortname : 'testing',
+        shortname : 'Rkh',
         position : {
             lat : 26.3551,
             lng : 50.1979
@@ -105,7 +105,7 @@ app.get('/', function(request, response) {
     },
     {
         title : 'Al Aziziyah العزيزية',
-        shortname : 'testing',
+        shortname : 'Azizya',
         position : {
             lat : 26.4572,
             lng : 50.0707
@@ -122,7 +122,22 @@ app.get('/', function(request, response) {
 });
 
 app.get('/location/:shortname', function(request, response) {
-	response.send( request.params.shortname );
+	
+		//get a single idea using the requested urlslug
+    Idea.findAll({shortname : request.params.shortname}, function(err, idea){
+		
+		var templateData = { 
+			idea : idea,
+			pageTitle : 'Deeraty',
+			//(if wanted to reference these images in code, would put templateData.images)images: personalImages,
+		};
+		console.log(templateData);
+	
+		response.render('my_idea.html', templateData);
+
+	}); //end of .findAll
+	
+	//response.send( request.params.shortname );
 });
 
 app.get('/about', function(request, response) {

@@ -31,7 +31,7 @@ var displayMarkers = function() {
         
         // create info window
         var infowindow = new google.maps.InfoWindow({
-                content: "<h4><a href='/location/"+ currLocation.shortname +"'>" + currLocation.title + "</a></h4>"
+                content: "<h3><a href='/location/"+ currLocation.shortname +"'>" + currLocation.title + "</a></h3>"
             });
         
         // create the map marker
