@@ -125,6 +125,7 @@ app.get('/location/:shortname', function(request, response) {
 	
 		//get a single idea using the requested urlslug
     Idea.find({shortname : request.params.shortname}, function(err, allIdeas){
+		
 		console.log(allIdeas);
 		
 		var templateData = { 
@@ -176,6 +177,7 @@ app.post('/post_idea', function(request, response) {
   newSlug = convertToSlug(request.body.type+request.body.name);  
   
     var IdeaData = { //making a new object of PersonalAdInfo -- we're just collecting all the data from the form into one chunk that we can then stick into the object, which is the model (which is defined in models.js. The schema is the combination of all the models).
+   location: request.body.location,
    idea : request.body.idea,
    good : request.body.good,
    type : request.body.type,
