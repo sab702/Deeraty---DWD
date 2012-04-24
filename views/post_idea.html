@@ -8,11 +8,9 @@
     		<div class="row">
     			<div class="span4 offset2">
     				<select name="location">
-						<option value="Al Aziziyah">Al Aziziyah</option>
-						<option value="Agrabiyah">Agrabiyah</option>
-						<option value="Ar Rakah">Ar Rakah</option>
-						<option value="Al Khobar Al Shamaliyah">Al Khobar Al Shamaliyah</option>
-						<option value="Thugbah">Thugbah</option>
+						<% for(i=0; i<locations.length; i++) { %>
+						<option value="<%= locations[i].shortname %>"><%= locations[i].title %></option>
+					 <% } %>
 					</select>
     			</div>
     		</div>

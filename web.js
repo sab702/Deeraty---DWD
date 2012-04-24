@@ -68,56 +68,14 @@ function convertToSlug(Text)
 
 Types=['beautify', 'improvement', 'infrastructure', 'greenery', 'other'];
 
-locations = [ 'Al Khobar Al Shamaliyah الخبر الشمالية', 'Agrabiyah عقربية', 'Thugbah ثقبة ', 'Ar Rakah الراكة', 'Al Aziziyah العزيزية'];
-
+//locations = [ 'Al Khobar Al Shamaliyah الخبر الشمالية', 'Agrabiyah عقربية', 'Thugbah ثقبة ', 'Ar Rakah الراكة', 'Al Aziziyah العزيزية'];
+  
 
 app.get('/', function(request, response) {
-  
-  locations = [ 
-    {
-        title : 'Al Khobar Al Shamaliyah الخبر الشمالية',
-        shortname : 'AlKhAlSh',
-        position : {
-            lat : 26.2876,
-            lng : 50.2142
-        }
-    },
-    {
-        title : 'Agrabiyah عقربية',
-        shortname : 'Agr',
-        position : {
-            lat : 26.2958,
-            lng : 50.1916
-        }
-    },
-    {
-        title : 'Thugbah ثقبة ',
-        shortname : 'Thug',
-        position : {
-            lat : 26.2725,
-            lng : 50.1914
-        }
-    },
-    {
-        title : 'Ar Rakah الراكة',
-        shortname : 'Rkh',
-        position : {
-            lat : 26.3551,
-            lng : 50.1979
-        }
-    },
-    {
-        title : 'Al Aziziyah العزيزية',
-        shortname : 'Azizya',
-        position : {
-            lat : 26.4572,
-            lng : 50.0707
-        }
-    }
-    
-    ];
+
     
     templateData = {
+    	locations : locations, //we've got locations as a global variable (bottom of page), so now we're putting it into the templateData as well
         customLocationsJSON : JSON.stringify(locations) //we convert it into a String (from an Object), and then in index.html we turn it back into a Javascript object on the template.
     }
     
@@ -161,6 +119,7 @@ app.get('/post_idea', function(request, response) {
     
     var templateData = { 
         idea : allIdeas,
+        locations : locations, 
         pageTitle : 'Deeraty',
         //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
     };
@@ -297,3 +256,47 @@ var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
+
+locations = [ 
+    {
+        title : 'Al Khobar Al Shamaliyah الخبر الشمالية',
+        shortname : 'AlKhAlSh',
+        position : {
+            lat : 26.2876,
+            lng : 50.2142
+        }
+    },
+    {
+        title : 'Agrabiyah عقربية',
+        shortname : 'Agr',
+        position : {
+            lat : 26.2958,
+            lng : 50.1916
+        }
+    },
+    {
+        title : 'Thugbah ثقبة ',
+        shortname : 'Thug',
+        position : {
+            lat : 26.2725,
+            lng : 50.1914
+        }
+    },
+    {
+        title : 'Ar Rakah الراكة',
+        shortname : 'Rkh',
+        position : {
+            lat : 26.3551,
+            lng : 50.1979
+        }
+    },
+    {
+        title : 'Al Aziziyah العزيزية',
+        shortname : 'Azizya',
+        position : {
+            lat : 26.4572,
+            lng : 50.0707
+        }
+    }
+    
+    ];
