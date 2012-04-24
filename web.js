@@ -124,18 +124,19 @@ app.get('/', function(request, response) {
 app.get('/location/:shortname', function(request, response) {
 	
 		//get a single idea using the requested urlslug
-    Idea.findAll({shortname : request.params.shortname}, function(err, idea){
+    Idea.find({shortname : request.params.shortname}, function(err, allIdeas){
+		console.log(allIdeas);
 		
 		var templateData = { 
-			idea : idea,
+			idea : allIdeas,
 			pageTitle : 'Deeraty',
 			//(if wanted to reference these images in code, would put templateData.images)images: personalImages,
 		};
 		console.log(templateData);
 	
-		response.render('my_idea.html', templateData);
+		response.render('all_ideas.html', templateData);
 
-	}); //end of .findAll
+	}); //end of .find
 	
 	//response.send( request.params.shortname );
 });
