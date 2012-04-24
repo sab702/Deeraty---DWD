@@ -68,9 +68,12 @@ function convertToSlug(Text)
 
 Types=['beautify', 'improvement', 'infrastructure', 'greenery', 'other'];
 
+locations = [ 'Al Khobar Al Shamaliyah الخبر الشمالية', 'Agrabiyah عقربية', 'Thugbah ثقبة ', 'Ar Rakah الراكة', 'Al Aziziyah العزيزية'];
+
+
 app.get('/', function(request, response) {
   
-  locations = [
+  locations = [ 
     {
         title : 'Al Khobar Al Shamaliyah الخبر الشمالية',
         shortname : 'AlKhAlSh',
@@ -239,7 +242,7 @@ app.get('/discuss', function(request, response) {
     
     var templateData = { 
         idea : allIdeas,
-        pageTitle : 'Afkarna',
+        pageTitle : 'All ideas أفكارنا',
         //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
     };
 
@@ -259,7 +262,7 @@ app.get('/all_ideas', function(request, response) {
     
     var templateData = { 
         idea : allIdeas,
-        pageTitle : 'Afkarna',
+        pageTitle : 'All ideas أفكارنا',
         //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
     };
 
@@ -271,7 +274,7 @@ app.get('/all_ideas', function(request, response) {
 app.get('/data/all', function(request, response) {
     
     // define the fields you want to include in your json data
-    includeFields = ['idea','good', 'type' ,'urlslug','date', 'name', 'email' ]
+    includeFields = ['location','idea','good', 'type' ,'urlslug','date', 'name', 'email' ]
 
     // query for all blog
     queryConditions = {}; //empty conditions - return everything
