@@ -85,7 +85,7 @@ app.get('/', function(request, response) {
 app.get('/location/:shortname', function(request, response) {
 	
 		//get a single idea using the requested urlslug
-    Idea.find({shortname : request.params.shortname}, function(err, allIdeas){
+    Idea.find({location : request.params.shortname}, function(err, allIdeas){
 		
 		console.log(allIdeas);
 		
@@ -104,6 +104,7 @@ app.get('/location/:shortname', function(request, response) {
 });
 
 app.get('/about', function(request, response) {
+
  response.render('about.html');
 });
 
@@ -220,6 +221,7 @@ app.get('/all_ideas', function(request, response) {
     query.exec({}, function(err, allIdeas){
     
     var templateData = { 
+    	locations: locations,
         idea : allIdeas,
         pageTitle : 'All ideas أفكارنا',
         //(if wanted to reference these images in code, would put templateData.images)images: personalImages,
