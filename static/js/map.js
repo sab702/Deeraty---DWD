@@ -3,11 +3,12 @@ var bounds;
 var mapLocations = [];
 var currMarker;
 var currInfoWindow;
+var userMarker;
 
 var initialize = function() {
     var myOptions = {
       zoom: 15,
-      maxZoom:15,
+      maxZoom:40,
       center: new google.maps.LatLng(26.3420, 50.1106),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };

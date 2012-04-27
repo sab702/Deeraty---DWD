@@ -1,7 +1,7 @@
 body { 
     background: #808080;
     color : #000000;
-    font-family: 'Bad Script', cursive;
+    font-family: 'Helvetica';
 }
 
 a { 
@@ -10,20 +10,22 @@ a {
 }
 
 h1 {
-    font-size: 60px;
-    line-height:90px;
+    font-size: 40px;
+    line-height:60px;
     color: #FFFFFF;
      text-align:center;
 }
 
 h2 {
-    font-size: 40px;
-    line-height:80px;
+    font-size: 30px;
+    line-height:50px;
     color: #FFFFFF;
      text-align:center;
 }
 
 h3{
+font-size: 15px;
+line-height:35px;
 color: #FFFFFF;
 }
 
@@ -32,16 +34,16 @@ color: #FF0000;
 }
 
 label {
-    font-family: 'Bad Script', cursive;
-    font-size:30px;
-    line-height:45px;
+    font-family: 'Helvetica';
+    <!--font-size:30px;->
+    <!--line-height:45px;->
     color: #FFFFFF;
     
 }
 
 
 input,textarea {
-    font-family: 'Bad Script', cursive;
+	font-family: 'Helvetica';
     padding:8px;
     font-size:30px;
     height:52px;
@@ -51,8 +53,8 @@ input,textarea {
 textarea#message {
     width:610px;
     height:200px;
-    line-height:80px;
-    font-family: 'Bad Script', cursive;
+    line-height:50px;
+    font-family: 'Helvetica';
 }
 
 
@@ -72,10 +74,6 @@ textarea#message {
 
 }
 
-#browse:hover #types {  
-	visibility:visible;
-}
-
 .type {  
 	
 }
@@ -87,3 +85,8 @@ max-width: none;
 #map_canvas a{
 	color:red;
 	}
+	
+div#map_canvas {
+    width:1000px;
+    height:500px;
+}

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html>
 <h1>See what others suggested:</h1>
-<br><br>
 <body>
+ <div class="span8" id="map_canvas"></div> <!--This is where Google places the map on the site-->
+
 <% for(i=0; i<idea.length; i++) { %>
 	<form method="POST" action="/my_idea/<%= idea[i].urlslug %>"> <!-- The information I provide here will be POSTED and will take me to XYZ pg-->	
-		<div class="row"	>
+		<div class="row">
 
     		<div class="span12">
 					<h2 class="location">The location: <%= idea[i].location %>. </h2>
