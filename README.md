@@ -1,8 +1,12 @@
+#Deeraty#
+
 This is the code for [deeraty.herokuapp.com](deeraty.herokuapp.com), which is very much a work-in-progress.
 The site allows users to submit suggested changes to their neighborhoods by toggling them to a map. I use the Google Maps API for this.
 (And for now, haven't yet figure out the user-editable markers.)
 
-This app is written in NodeJS (a form of JavaScript), uses MongoDB for databases and is launched on Heroku.
+Also, for more information on the [Google Maps API go here] (https://developers.google.com/maps/documentation/javascript/tutorial). Maybe you'll have better luck than I did!
+
+This app is written in [NodeJS](http://nodejs.org/) (a form of JavaScript), uses MongoDB for databases and is launched on Heroku.
 
 The dependencies that this code uses are in the package.json file.
 
@@ -71,28 +75,4 @@ You can access environment variables in your NodeJS code, for example in web.js 
 	process.env.MONGOLAB_URI // this is the same as manually entering 'mongodb://username:password@host:port/database'
 
 ###Mongoose - MongoDB node module
-We will be using Mongoose library to connect to our database. Update your web.js file to include Mongoose module and database configuration.
-
-web.js
-
-var express = require('express'); 
-var ejs = require('ejs'); //embedded javascript template engine
-
-var app = express.createServer(express.logger());
-
-var mongoose = require('mongoose'); // include Mongoose MongoDB library
-var schema = mongoose.Schema; 
-
-/************ DATABASE CONFIGURATION **********/
-app.db = mongoose.connect(process.env.MONGOLAB_URI); //connect to the mongolabs database - local server uses .env file
-
-// include the database model / schema
-require('./models').configureSchema(schema, mongoose);
-
-// Define your DB Model variables
-var BlogPost = mongoose.model('BlogPost');
-var Comment = mongoose.model('Comment');
-/************* END DATABASE CONFIGURATION *********/
-Models and Schema - models.js
-
-There is a new file called models.js, this includes the data definitions or schema for your database. You will define what data you will be saving in your Mongo collection. See the Mongoose web site for more information, http://mongoosejs.com/
+I use Mongoose library to connect to the database. A file, called models.js, includes the data definitions or 'schema' for my database. I define what data I'll be saving in my Mongo collection. [See the Mongoose web site for more information.](http://mongoosejs.com/)
