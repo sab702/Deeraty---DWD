@@ -33,7 +33,7 @@ color: #FFFFFF;
 }
 
 h4{
-color: #FF0000;
+color: #FFFFFF;
 }
 
 label {
@@ -62,7 +62,7 @@ textarea#message {
 
 
 .container { 
-
+	background: #EE9A4D;
 
 }
 
@@ -90,6 +90,6 @@ max-width: none;
 	}
 	
 div#map_canvas {
-    width:1000px;
+    width:900px;
     height:500px;
 }

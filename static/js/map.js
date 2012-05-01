@@ -4,6 +4,7 @@ var mapLocations = [];
 var currMarker;
 var currInfoWindow;
 var markersArray = [];
+var iterator = 0;
 
 var initialize = function() {
     var myOptions = {
@@ -14,12 +15,13 @@ var initialize = function() {
     };
 
     map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-
-     google.maps.event.addListener(map, 'click', function(event) {
+  
+  google.maps.event.addListener(map, 'click', function(event) {
           addMarker(event.LatLng);
         });
     // now create markers from myLocations
     displayMarkers();
+   // displayAddedMarkers();
 }
 
 
@@ -97,10 +99,20 @@ var loadScript = function() {
 function addMarker (location) {
 	marker = new google.maps.Marker({
 		position: location,
-		map: map
+		map: map,
+		draggable: true,
+		animation: google.maps.Animation.DROP,
 		});
+		iterator++;
 	markersArray.push(marker);
 }
+
+//from Tak -- put new marker into the global mapMarkers array
+mapLocation = {
+	marker : marker,
+	infowindow : infowindow
+	};
+	
 // Sets the map on all markers in the array.
       function setAllMap(map) {
         for (var i = 0; i < markersArray.length; i++) {
