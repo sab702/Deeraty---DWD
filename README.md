@@ -10,6 +10,9 @@ This app is written in [NodeJS](http://nodejs.org/) (a form of JavaScript), uses
 
 The dependencies that this code uses are in the package.json file.
 
+###Thanks
+I owe many thanks to [John Schimmel](https://github.com/johnschimmel) for all his help. I did this in his [Dynamic Web Development](http://itpwebclass.herokuapp.com/) class at ITP in 2012.
+
 ## Get the code
 
 ###Download Zip file
@@ -76,3 +79,20 @@ You can access environment variables in your NodeJS code, for example in web.js 
 
 ###Mongoose - MongoDB node module
 I use Mongoose library to connect to the database. A file, called models.js, includes the data definitions or 'schema' for my database. I define what data I'll be saving in my Mongo collection. [See the Mongoose web site for more information.](http://mongoosejs.com/)
+
+##Running locally
+Once you've got nodeJS running, you can run this locally through this code in terminal:
+
+	node web.js
+	
+This'll work if you've set a local host (localhost:5000) in your web.js file (I've got it at the bottom of the file) and you open it.
+
+OR
+
+If you've got the Heroku Toolbelt running, you can simply enter this code:
+
+	foreman start
+	
+And that'll work!
+
+Happy coding. 
