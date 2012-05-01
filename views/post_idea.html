@@ -4,10 +4,13 @@
 <div class="row">
     <div class="span12">
         <form method="POST" action="/post_idea"> <!-- make sure this matches the POST action in the web.js file -->
-    
+    		<div class="container">
+    			 <div class="span8" id="map_canvas"></div>
+    			 <br/><br/>
+    		</div>	 
     		<div class="row">
     			<div class="span4 offset2">
-    				<select name="location">
+    				Location: <select name="location">
 						<% for(i=0; i<locations.length; i++) { %>
 						<option value="<%= locations[i].shortname %>"><%= locations[i].title %></option>
 					 <% } %>

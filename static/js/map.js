@@ -3,7 +3,7 @@ var bounds;
 var mapLocations = [];
 var currMarker;
 var currInfoWindow;
-var userMarker;
+var markersArray = [];
 
 var initialize = function() {
     var myOptions = {
@@ -15,11 +15,12 @@ var initialize = function() {
 
     map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
 
-    
+     google.maps.event.addListener(map, 'click', function(event) {
+          addMarker(event.LatLng);
+        });
     // now create markers from myLocations
     displayMarkers();
 }
-
 
 
 var displayMarkers = function() {
@@ -88,4 +89,49 @@ var loadScript = function() {
     script.src = 'https://maps.googleapis.com/maps/api/js?sensor=false&' +
         'callback=initialize';
     document.body.appendChild(script);
+}
+
+///////////////////////// New code ////////////////////
+
+
+function addMarker (location) {
+	marker = new google.maps.Marker({
+		position: location,
+		map: map
+		});
+	markersArray.push(marker);
+}
+// Sets the map on all markers in the array.
+      function setAllMap(map) {
+        for (var i = 0; i < markersArray.length; i++) {
+          markersArray[i].setMap(map);
+        }
+      }
+
+// Removes the overlays from the map, but keeps them in the array
+function clearOverlays() {
+  if (markersArray) {
+    for (i in markersArray) {
+      markersArray[i].setMap(null);
+    }
+  }
+}
+
+// Shows any overlays currently in the array
+function showOverlays() {
+  if (markersArray) {
+    for (i in markersArray) {
+      markersArray[i].setMap(map);
+    }
+  }
+}
+
+// Deletes all markers in the array by removing references to them
+function deleteOverlays() {
+  if (markersArray) {
+    for (i in markersArray) {
+      markersArray[i].setMap(null);
+    }
+    markersArray.length = 0;
+  }
 }

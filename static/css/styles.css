@@ -1,7 +1,8 @@
 body { 
-    background: #808080;
+   /* background: #808080; */
     color : #000000;
     font-family: 'Helvetica';
+    background-image:url('../img/desert.jpg');
 }
 
 a { 
@@ -16,11 +17,13 @@ h1 {
      text-align:center;
 }
 
+
 h2 {
     font-size: 30px;
     line-height:50px;
     color: #FFFFFF;
-     text-align:center;
+    text-align:center;
+    padding-bottom: 5px;
 }
 
 h3{
